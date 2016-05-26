@@ -18,6 +18,7 @@
 import jquery from 'jquery';
 import chosen from 'imports?jQuery=jquery!../../bower_components/chosen/chosen.jquery.js';
 import '../../bower_components/chosen/chosen.css';
+import subsets from '../services/subsets.js';
 export default {
     init() {
             jquery.ajax({
@@ -32,6 +33,8 @@ export default {
                         jquery(this.$el).find('select').chosen();
                     });
                 });
+
+                console.log(subsets.calc([1,2,3]));
         },
         data() {
             return {
