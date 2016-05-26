@@ -16,14 +16,22 @@
 <script>
 
 import jquery from 'jquery';
+import chosen from 'imports?jQuery=jquery!../../bower_components/chosen/chosen.jquery.js';
+import '../../bower_components/chosen/chosen.css';
 export default {
     init() {
             jquery.ajax({
-                url: '/api/users',
-                method: 'GET'
-            }).then(users => {
-                this.$data.users = users;
-            });
+                    url: '/api/users',
+                    method: 'GET'
+                })
+                .then(users => {
+                    this.$data.users = users;
+                })
+                .then(() => {
+                    this.$nextTick(() => {
+                        jquery(this.$el).find('select').chosen();
+                    });
+                });
         },
         data() {
             return {
